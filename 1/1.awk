@@ -1,3 +1,5 @@
+#!/usr/bin/awk -f
+
 BEGIN{
     a=0
 }
@@ -21,13 +23,13 @@ BEGIN{
 
 {
     if (NR > 3) {
-        if (prev_3 + prev_2 + prev_1 < prev_2 + prev_1 + $0) {
+        if (window[3] + window[2] + window[1] < window[2] + window[1] + $0) {
             b+=1
         }
     }
-    prev_3=prev_2
-    prev_2=prev_1
-    prev_1=$0
+    window[3]=window[2]
+    window[2]=window[1]
+    window[1]=$0
 }
 
 END{
