@@ -1,18 +1,18 @@
 #!/usr/bin/awk -f
 
-function calculate(ages, days) {
+function calculate(cycle, days) {
     for (day=1;day<=days;day++) {
-        born = ages[0]
+        born = cycle[0]
         for (i=0;i<=7;i++) {
-            ages[i]=ages[i+1]
+            cycle[i]=cycle[i+1]
         }
-        ages[8]=born
-        ages[6]+=born
+        cycle[8]=born
+        cycle[6]+=born
     }
 
     sum=0
     for (i=0;i<=8;i++) {
-        sum+=ages[i]
+        sum+=cycle[i]
     }
 
     return sum
@@ -21,16 +21,16 @@ function calculate(ages, days) {
 BEGIN {
     RS=","
     for (i=0;i<=8;i++) {
-        ages[i]=0
+        cycle[i]=0
     }
 }
 
 {
-    ages_a[$1]+=1
-    ages_b[$1]+=1
+    cycle_a[$1]+=1
+    cycle_b[$1]+=1
 }
 
 END {
-    print "Part A: ", calculate(ages_a, 80)
-    print "Part B: ", calculate(ages_b, 256)
+    print "Part A: ", calculate(cycle_a, 80)
+    print "Part B: ", calculate(cycle_b, 256)
 }
