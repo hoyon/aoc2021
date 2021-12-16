@@ -65,9 +65,9 @@ END {
         line=""
         for (x=0;x<last_x;x++) {
             if (typeof(dots[f][x][y]) == "unassigned") {
-                line=line "."
+                line=line " "
             } else {
-                line=line "x"
+                line=line "X"
             }
         }
         print line
