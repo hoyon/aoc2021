@@ -26,7 +26,7 @@ function pop_step() {
 }
 
 function can_visit(cave) {
-    if (cave == tolower(cave)) {
+    if (cave ~ /[a-z]/) {
         found=0
         for(a=1;a<stack_ptr;a++) {
             if (stack[a] == cave) {
@@ -43,7 +43,7 @@ function can_visit(cave) {
             delete counts
             has_dupe=0
             for (x=1;x<stack_ptr;x++) {
-                if (stack[x] == tolower(stack[x])) {
+                if (stack[x] ~ /[a-z]/) {
                     counts[stack[x]]+=1
                     if (counts[stack[x]] > 1) {
                         has_dupe=1
